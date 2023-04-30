@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.trapezoid {
+  position: absolute;
+  width: 100px;
+  height: 0;
+  padding-bottom: 50px; /* 控制梯形的高度 */
+  background-color: #1d1d1d;
+  border-bottom-right-radius: 25px !important;
+  border-radius: 10px; /* 添加圓角 */
+}
+
+.trapezoid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 53px;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 37px !important;
+  width: 172px;
+  height: 100%;
+  background-color: inherit;
+  border-radius: inherit;
+  transform: skewX(53deg);
+}
+.trapezoid-reverse {
+  position: absolute;
+  width: 100px;
+  height: 0;
+  padding-bottom: 50px; /* 控制梯形的高度 */
+  background-color: #16171b;
+  border-top-left-radius: 25px !important;
+  border-radius: 10px; /* 添加圓角 */
+}
+
+.trapezoid-reverse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 53px;
+  border-top-right-radius: 20px !important;
+  border-bottom-right-radius: 0px !important;
+  width: 125px;
+  height: 100%;
+  background-color: inherit;
+  border-radius: inherit;
+  transform: skewX(53deg);
+}
+.footer-shadow {
+  box-shadow: 0 -12px 24px #000;
+}
