@@ -1,37 +1,35 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
-import "../src/styles/App.css";
-import Wrapper from "./components/Wrapper";
-import Home from "./pages/Home/Home";
-import { routes } from "./utils/routes";
-import Signup from "./pages/Signup/Signup";
 import { useState } from "react";
-import Signin from "./pages/Singin/Signin";
+import { HashRouter, Outlet, Route, Routes } from "react-router-dom";
+import "../src/styles/App.css";
+import { routes } from "./utils/routes";
+import LoadingPage from "./components/Loading/LoadingPage";
+import { useSelector } from "react-redux";
+import ProgressBlock from "./components/ProgressBlock/ProgressBlock";
 
 function App() {
-  const [openSignin, setOpenSignin] = useState(false);
-  const [openSignup, setOpenSignup] = useState(false);
-
   return (
     <main className="">
       <HashRouter>
         <Routes>
           {routes.map((route, index) => {
             return (
-              <Route key={index} path={route.path} element={route.element} />
+              <Route key={index} path={route.path} element={route.element}>
+                {route.children?.map((child, index) => {
+                  return (
+                    <Route
+                      key={index}
+                      path={child.path}
+                      element={child.element}
+                    />
+                  );
+                })}
+              </Route>
             );
           })}
-          <Route
-            path="*"
-            element={
-              <Wrapper>
-                <Home />
-              </Wrapper>
-            }
-          />
         </Routes>
-        <Signin />
-        <Signup />
       </HashRouter>
+      <LoadingPage />
+      <ProgressBlock />
     </main>
   );
 }

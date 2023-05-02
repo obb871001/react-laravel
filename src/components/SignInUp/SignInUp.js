@@ -1,32 +1,35 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 import { Button } from "semantic-ui-react";
-import { openSignin, openSignup } from "../../redux/action/action";
 
-const SignInUp = ({}) => {
-  const dispatch = useDispatch();
-  const isSign = useSelector((state) => state.isSignupTrigger);
+const SignInUp = ({ Static }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <section className="flex gap-[5px]">
       <Button
         content="SIGNIN"
         onClick={() => {
-          dispatch(openSignin());
+          navigate("/signin");
         }}
         className={`${
-          isSign === "signin"
+          Static
+            ? "!bg-third-color !text-white"
+            : location.pathname === "/signin"
             ? "!bg-main-color !text-second-color"
             : "!bg-third-color !text-white"
         }`}
       />
       <Button
         content="SIGNUP"
-        onClick={() => dispatch(openSignup())}
+        onClick={() => {
+          navigate("/signup");
+        }}
         className={`${
-          isSign === "signup"
+          Static
+            ? "!bg-main-color !text-second-color"
+            : location.pathname === "/signup"
             ? "!bg-main-color !text-second-color"
             : "!bg-third-color !text-white"
         }`}

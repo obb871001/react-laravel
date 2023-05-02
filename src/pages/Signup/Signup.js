@@ -6,20 +6,20 @@ import { Icon } from "semantic-ui-react";
 import { HiPhone } from "react-icons/hi";
 
 import SignInUp from "../../components/SignInUp/SignInUp";
-import { useDispatch, useSelector } from "react-redux";
-import { closeSign } from "../../redux/action/action";
 import MailSignup from "./MailSignup";
 import PhoneSignup from "./PhoneSignup";
 import { popUpVariant } from "../../animateConstant";
+import { useNavigate } from "react-router";
 
 const Signup = () => {
   const [chooseSignupMethod, setChooseSignupMethod] = useState("mail");
+  const [isClosing, setIsClosing] = useState(false);
 
-  const signTrigger = useSelector((state) => state.isSignupTrigger);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <AnimatePresence>
-      {signTrigger === "signup" && (
+      {!isClosing && (
         <main className="fixed top-0 left-0 w-full h-full z-[9999] bg-[rgba(0, 0, 0, 0.5)] backdrop-blur-md">
           <motion.section
             variants={popUpVariant}
@@ -34,7 +34,12 @@ const Signup = () => {
             <section className="flex items-center justify-between h-[60px] px-common-padding-x">
               <SignInUp />
               <Icon
-                onClick={() => dispatch(closeSign())}
+                onClick={() => {
+                  setIsClosing(true);
+                  setTimeout(() => {
+                    navigate("/");
+                  }, 200);
+                }}
                 name="close"
                 className="!mb-[8px] !text-2xl !text-white"
               />

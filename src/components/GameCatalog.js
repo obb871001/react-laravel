@@ -1,5 +1,7 @@
 import { Icon } from "semantic-ui-react";
 import { GAME_LIST } from "../helpers/gameList";
+import ShowGameDetail from "./ShowGameDetail";
+import { useState } from "react";
 
 const SlideRight = () => {
   return <section className="trapezoid absolute top-0 right-0 "></section>;
@@ -19,6 +21,8 @@ const GameCatalog = ({
   noWrap,
   hasBottomTitle,
 }) => {
+  const [openGameDetail, setOpenGameDetail] = useState(false);
+
   return (
     <section className="bg-game-background relative rounded-[30px] px-[20px] pt-[3px] pb-[20px] mb-[20px]">
       <SlideRight />
@@ -65,6 +69,7 @@ const GameCatalog = ({
                 className={`rounded-[15px] ${
                   hasBottomTitle ? "h-[160px]" : "h-[140px]"
                 } min-w-[110px] relative`}
+                onClick={() => setOpenGameDetail(true)}
               >
                 <div
                   style={{
@@ -72,7 +77,7 @@ const GameCatalog = ({
                     backgroundSize: "100% 100%",
                   }}
                   className={`w-full h-full absolute rounded-[15px] bg-center bg-no-repeat ${
-                    hasBottomTitle && "h-[130px] rounded-b-[0px]"
+                    hasBottomTitle && "!h-[130px] rounded-b-[0px]"
                   }`}
                 />
                 <div
@@ -93,6 +98,10 @@ const GameCatalog = ({
           })}
         </section>
       </section>
+      <ShowGameDetail
+        openGameDetail={openGameDetail}
+        setOpenGameDetail={setOpenGameDetail}
+      />
     </section>
   );
 };

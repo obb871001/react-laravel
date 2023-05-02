@@ -1,15 +1,21 @@
-export const openSignup = () => {
+export const loading = () => {
   return {
-    type: "openSignup",
+    type: "loading",
   };
 };
-export const closeSign = () => {
+export const loadingDestroy = () => {
   return {
-    type: "closeSign",
+    type: "loadingDestroy",
   };
 };
-export const openSignin = () => {
+export const notice = (content, type, timer) => {
   return {
-    type: "openSignin",
+    type: "notice",
+    payload: { content: content, type: type, timer: timer, show: true },
+  };
+};
+export const clearNotice = () => {
+  return {
+    type: "clearNotice",
   };
 };

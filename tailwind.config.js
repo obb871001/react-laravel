@@ -14,6 +14,8 @@ module.exports = {
         "footer-bg": "#252828",
         "input-color": "#252828",
         "input-border-color": "#323c3c",
+        "input-border-light-color": "#575757",
+        "gold-text": "#ffc700",
       },
       padding: {
         "common-padding-x": "12px",

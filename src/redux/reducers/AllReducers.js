@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import SignupTriggerReducers from "./SignupTrigger";
+import LoadingReducers from "./LoadingReducers";
+import NoticeReducers from "./NoticeReducers";
 
 const AllReducers = combineReducers({
-  isSignupTrigger: SignupTriggerReducers,
+  isLoading: LoadingReducers,
+  isNotice: NoticeReducers,
 });
 
 export default AllReducers;

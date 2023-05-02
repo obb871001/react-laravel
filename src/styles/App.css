@@ -51,3 +51,12 @@
 .footer-shadow {
   box-shadow: 0 -12px 24px #000;
 }
+.absolute-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress .bar {
+  min-width: 0% !important;
+}

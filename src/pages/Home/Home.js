@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Carousel from "../../components/Carousel";
-import EventListSelect from "../../components/EventListSelect";
+import EventListSelect from "../../components/EventListSelect/EventListSelect";
 import GameCatalog from "../../components/GameCatalog";
 const Home = () => {
   return (

@@ -1,21 +1,21 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { HiPhone } from "react-icons/hi";
-import { useDispatch, useSelector } from "react-redux";
 import { popUpVariant } from "../../animateConstant";
 import SignInUp from "../../components/SignInUp/SignInUp";
 import { Icon } from "semantic-ui-react";
-import { closeSign } from "../../redux/action/action";
 import { IoMail } from "react-icons/io5";
 import MailSignin from "./MailSignin";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Signin = () => {
   const [chooseSigninMethod, setChooseSigninMethod] = useState("mail");
-  const signTrigger = useSelector((state) => state.isSignupTrigger);
-  const dispatch = useDispatch();
+  const [isClosing, setIsClosing] = useState(false);
+
+  const navigate = useNavigate();
   return (
     <AnimatePresence>
-      {signTrigger === "signin" && (
+      {!isClosing && (
         <main className="fixed top-0 left-0 w-full h-full z-[9999] bg-[rgba(0, 0, 0, 0.5)] backdrop-blur-md">
           <motion.section
             variants={popUpVariant}
@@ -30,7 +30,12 @@ const Signin = () => {
             <section className="flex items-center justify-between h-[60px] px-common-padding-x">
               <SignInUp />
               <Icon
-                onClick={() => dispatch(closeSign())}
+                onClick={() => {
+                  setIsClosing(true);
+                  setTimeout(() => {
+                    navigate("/");
+                  }, 200);
+                }}
                 name="close"
                 className="!mb-[8px] !text-2xl !text-white"
               />
