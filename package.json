@@ -29,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "ftpDeploy": "npm run build && node deployDeploy.js"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "ssh2-sftp-client": "^9.1.0"
   }
 }
