@@ -7,6 +7,7 @@ module.exports = {
         "main-color": "#ABD010",
         "second-color": "#1D1D1D",
         "third-color": "#323C3C",
+        "extra-black": "#171616",
         "common-border": "#141414",
         "light-border": "#323c3c",
         "light-text": "#8fa8aa",
@@ -16,6 +17,8 @@ module.exports = {
         "input-border-color": "#323c3c",
         "input-border-light-color": "#575757",
         "gold-text": "#ffc700",
+        "light-white": "#e2e8e3",
+        "pc-bg": "#1A1A1A",
       },
       padding: {
         "common-padding-x": "12px",

@@ -10,6 +10,7 @@ import "swiper/css/autoplay";
 import "swiper/css";
 
 import { stylesConfig } from "../helpers/stylesConfig";
+import useDeviceType from "../hook/useDeviceType";
 
 const carouselList = stylesConfig.carouselImages;
 
@@ -30,6 +31,22 @@ const Carousel = () => {
         onSwiper={(swiper) => swiper}
         modules={[Autoplay]}
         effect="fade"
+        spaceBetween={50}
+        slidesPerView={1}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 2.2,
+            spaceBetween: 20,
+          },
+        }}
       >
         {carouselList.map((list, index) => {
           return (
@@ -37,7 +54,7 @@ const Carousel = () => {
               <img
                 src={list}
                 alt={list}
-                className="h-[180px] w-full rounded-[8px] object-cover"
+                className="sm:h-[280px] h-[180px] w-full rounded-[8px] object-cover"
               />
             </SwiperSlide>
           );

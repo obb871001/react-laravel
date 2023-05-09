@@ -7,6 +7,7 @@ const InputComponents = ({
   dataProps,
   setDataProps,
   onFocus,
+  placeholder,
 }) => {
   return (
     <section
@@ -28,9 +29,11 @@ const InputComponents = ({
           name={inputProps.label}
           onChange={inputProps.onChange}
           className="!bg-input-color !text-[#e2e8e3] font-bold py-[15px]"
-          placeholder={`Input your ${inputProps.label}`}
+          placeholder={
+            placeholder ? placeholder : `Input your ${inputProps.label}`
+          }
         />
-        {focusProps[inputProps.label] && (
+        {focusProps[inputProps.label] && dataProps[inputProps.label] !== "" ? (
           <Icon
             link
             className={`text-light-text ${inputProps.needIcon && "!mr-[30px]"}`}
@@ -39,7 +42,7 @@ const InputComponents = ({
               setDataProps({ ...dataProps, [inputProps.label]: "" })
             }
           />
-        )}
+        ) : null}
 
         {inputProps.needIcon && (
           <Icon

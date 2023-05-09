@@ -6,6 +6,8 @@ const SignInUp = ({ Static }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { pathname } = location;
+
   return (
     <section className="flex gap-[5px]">
       <Button

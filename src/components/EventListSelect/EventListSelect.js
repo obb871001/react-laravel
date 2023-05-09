@@ -16,11 +16,12 @@ const EVENTS_LIST = [
   {
     icon: event2,
     label: "",
-    link: "/promotions",
+    link: "/promotion",
   },
   {
     icon: event3,
     label: "",
+    link: "/task",
   },
   {
     icon: event4,
@@ -34,6 +35,7 @@ const EVENTS_LIST = [
   {
     icon: event7,
     label: "",
+    link: "checkin",
   },
 ];
 
@@ -71,7 +73,7 @@ const EventListSelect = () => {
                         dispatch(loadingDestroy());
                       }, 500);
                     }}
-                    className="flex items-center justify-center w-[40px] h-[40px] rounded-[8px] bg-common-border"
+                    className="flex items-center justify-center w-[40px] h-[40px] rounded-[8px] bg-common-border cursor-pointer"
                   >
                     <img src={event.icon} alt={event.icon} />
                   </div>

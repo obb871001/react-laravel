@@ -1,15 +1,20 @@
 import { useState } from "react";
 
+import { BiMessageSquareAdd } from "react-icons/bi";
 import { GiHamburgerMenu, GiPokerHand } from "react-icons/gi";
 import { RiHomeSmileFill, RiVipCrownFill } from "react-icons/ri";
 import { IoGift } from "react-icons/io5";
 import MenuBar from "../pages/MenuBar/MenuBar";
 import { useLocation, useNavigate } from "react-router";
+import { loading, loadingDestroy, openMenu } from "../redux/action/action";
+import { useDispatch } from "react-redux";
 
 const iconStyle = "text-2xl";
 
 const Footer = () => {
   const [isFooterOpen, setIsFooterOpen] = useState("Home");
+
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,9 +25,9 @@ const Footer = () => {
       text: "Menu",
     },
     {
-      icon: <GiPokerHand className={iconStyle} />,
-      text: "Games",
-      link: "games",
+      icon: <IoGift className={iconStyle} />,
+      text: "Rewards",
+      link: "rewards",
     },
     {
       icon: <RiHomeSmileFill className={iconStyle} />,
@@ -34,7 +39,11 @@ const Footer = () => {
       text: "VIP",
       link: "vip",
     },
-    { icon: <IoGift className={iconStyle} />, text: "Gift", link: "gift" },
+    {
+      icon: <BiMessageSquareAdd className={iconStyle} />,
+      text: "App",
+      link: "app",
+    },
   ];
 
   return (
@@ -51,9 +60,16 @@ const Footer = () => {
             onClick={() => {
               setIsFooterOpen(footer.text);
               if (footer.text === "Menu") {
-                return;
+                dispatch(openMenu());
+              } else if (footer.text === "App") {
+                navigate("app");
               } else {
-                navigate(`/${footer.link}`);
+                dispatch(loading());
+
+                setTimeout(() => {
+                  navigate(`/${footer.link}`);
+                  dispatch(loadingDestroy());
+                }, 200);
               }
             }}
           >
@@ -62,7 +78,7 @@ const Footer = () => {
           </div>
         );
       })}
-      <MenuBar isMenuOpen={isFooterOpen} setIsMenuOpen={setIsFooterOpen} />
+      {/* <MenuBar isMenuOpen={isFooterOpen} setIsMenuOpen={setIsFooterOpen} /> */}
     </footer>
   );
 };

@@ -1,17 +1,31 @@
+import { useNavigate } from "react-router";
 import { PROMOTION_BANNER_BACKGROUND, PROMOTION_LIST } from "./PromotionList";
+import { motion } from "framer-motion";
+import { commonOpacity } from "../../animateConstant";
+import { useDispatch } from "react-redux";
+import { goToDetailPage } from "../../redux/action/action";
 
 const Promotion = () => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   return (
-    <main className="px-common-padding-x py-common-padding-y">
-      <p className="text-center font-semibold text-lg text-white">Promotions</p>
-      <section className="mt-[16px]">
+    <motion.main className="px-common-padding-x py-common-padding-y">
+      <p className="text-center font-semibold text-lg text-white lg:text-5xl">
+        Promotions
+      </p>
+      <section className="mt-[16px] md:grid grid-cols-3 gap-[10px]">
         {PROMOTION_LIST.map((promotion, index) => {
           const sectionColor = PROMOTION_BANNER_BACKGROUND[index % 3];
 
           return (
             <section
               key={index}
-              className="w-full rounded-[10px] bg-third-color min-h-[145px] p-[16px] relative mb-[15px]"
+              className="w-full rounded-[10px] bg-third-color min-h-[145px] p-[16px] relative cursor-pointer mb-[15px]"
+              onClick={() => {
+                navigate(`promotioncontent`);
+              }}
             >
               <div className="flex flex-col w-[40%]">
                 <p className="text-white text-lg mb-[5px] font-semibold">
@@ -37,7 +51,7 @@ const Promotion = () => {
           );
         })}
       </section>
-    </main>
+    </motion.main>
   );
 };
 

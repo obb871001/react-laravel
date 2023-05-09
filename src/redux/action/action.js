@@ -19,3 +19,29 @@ export const clearNotice = () => {
     type: "clearNotice",
   };
 };
+export const goToDetailPage = () => {
+  return {
+    type: "goToDetailPage",
+  };
+};
+export const goOutDetailPage = () => {
+  return {
+    type: "goOutDetailPage",
+  };
+};
+export const openMenu = () => {
+  return {
+    type: "openMenu",
+  };
+};
+export const CloseMenu = () => {
+  return {
+    type: "CloseMenu",
+  };
+};
+export const selectMenu = (menu) => {
+  return {
+    type: "selectMenu",
+    payload: menu,
+  };
+};

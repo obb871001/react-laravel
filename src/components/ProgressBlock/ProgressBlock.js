@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon, Progress, Segment } from "semantic-ui-react";
 import { clearNotice } from "../../redux/action/action";
+import { IoCloseOutline } from "react-icons/io5";
 
 const ProgressBlock = ({}) => {
   const [percent, setPercent] = useState(0);
@@ -50,7 +51,7 @@ const ProgressBlock = ({}) => {
           exit={{ opacity: 0 }}
           className="fixed absolute-center !top-[60px] z-[999999]"
         >
-          <Segment className="">
+          <Segment className="flex items-center">
             {type === "success" && (
               <Icon name="check" className="text-green-500" />
             )}
@@ -68,6 +69,10 @@ const ProgressBlock = ({}) => {
               success={type === "success"}
               warning={type === "warning"}
               error={type === "error"}
+            />
+            <IoCloseOutline
+              onClick={() => dispatch(clearNotice())}
+              className="ml-[10px] text-xl"
             />
           </Segment>
         </motion.section>

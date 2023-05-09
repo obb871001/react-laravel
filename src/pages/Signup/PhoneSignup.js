@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Icon, Input } from "semantic-ui-react";
 
-import InputComponents from "../../components/InputComponents";
+import InputComponents from "../../components/InputComponents/InputComponents";
 
 const PhoneSignup = () => {
   const [watchPassword, setWatchPassword] = useState(false);
